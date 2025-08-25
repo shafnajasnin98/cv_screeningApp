@@ -3,4 +3,4 @@ PyMuPDF
 scikit-learn
 sentence-transformers
 spacy==3.6.1
-en-core-web-sm==3.6.0
+pdfminer.six==20221105
