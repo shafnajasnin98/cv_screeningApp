@@ -1,8 +1,17 @@
 import fitz  # PyMuPDF
 import spacy
 from skills_list import skills
+import subprocess
+import sys
 
-nlp = spacy.load("en_core_web_sm")
+# nlp = spacy.load("en_core_web_sm")
+# Load SpaCy model safely
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    # Install model if missing
+    subprocess.check_call([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
+    nlp = spacy.load("en_core_web_sm")
 
 def extract_text_from_pdf(uploaded_file):
     text = ""
